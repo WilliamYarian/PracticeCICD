@@ -1,0 +1,28 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/python:3.11-browsers  # Supports Chrome & chromedriver
+    working_directory: ~/project
+    steps:
+      - checkout
+
+      - run:
+          name: Set up Chrome env variables (optional)
+          command: |
+            echo "CHROME_BIN=/usr/bin/google-chrome" >> $BASH_ENV
+            echo "DISPLAY=:99" >> $BASH_ENV
+
+      - run:
+          name: Set up virtualenv and install dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+          pytest
