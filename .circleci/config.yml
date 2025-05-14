@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/python:3.11-browsers  # Supports Chrome & chromedriver
+      - image: cimg/python:3.11-browsers
     working_directory: ~/project
     steps:
       - checkout
@@ -22,7 +22,7 @@ jobs:
             pip install -r requirements.txt
 
       - run:
-        name: Run tests
-        command: |
-          . venv/bin/activate
-          pytest
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            pytest
