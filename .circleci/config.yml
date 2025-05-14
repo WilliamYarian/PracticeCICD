@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/python:3.11-browsers  # Includes Chrome & chromedriver
+      - image: cimg/python:3.11-browsers  # Supports Python 3.11 + Chrome/Chromedriver
     working_directory: ~/project
     steps:
       - checkout
