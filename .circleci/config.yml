@@ -9,13 +9,13 @@ jobs:
       - checkout
 
       - run:
-          name: Set up Chrome environment variables (optional)
+          name: Set up Chrome environment
           command: |
             echo "CHROME_BIN=/usr/bin/google-chrome" >> $BASH_ENV
             echo "DISPLAY=:99" >> $BASH_ENV
 
       - run:
-          name: Set up virtualenv and install dependencies
+          name: Create virtualenv and install dependencies
           command: |
             python -m venv venv
             . venv/bin/activate
@@ -23,7 +23,7 @@ jobs:
             pip install -r requirements.txt
 
       - run:
-          name: Run tests
+          name: Run tests with Pytest
           command: |
             . venv/bin/activate
             pytest
